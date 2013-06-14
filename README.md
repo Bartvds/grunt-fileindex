@@ -27,24 +27,44 @@ Leverage the standard grunt file selector api to select files and output lists o
 
 More will added later or at request.
 
+### Options
+
+````
+//default options:
+format: 'lines'
+sort: true
+absolute: false
+
+//not supported by all formats:
+pretty: true
+````
+
 ### Usage Examples
 
 ```js
 grunt.initConfig({
 	fileindex: {
-		list: {
+		lines: {
 			options: {
-				//simple flat json array
-				type: 'json_flat'
+				format: 'lines',
+				absolute: true,
 			},
 			files: [
-				{dest: 'tmp/index.json', src: ['**/*']}
+				{dest: 'tmp/index.txt', src: ['**/*']}
+			]
+		},
+		list: {
+			options: {
+				format: 'json_flat',
+				pretty: true
+			},
+			files: [
+				{dest: 'tmp/list.json', src: ['**/*']}
 			]
 		},
 		scripts: {
 			options: {
-				//document.write <script> tags
-				type: 'script_src'
+				format: 'script_src'
 			},
 			files: [
 				{dest: 'test/all.js', src: ['**/*.test.js'], cwd: 'test', filter: 'isFile'}

@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 			},
 			script_src: {
 				options: {
-					type: 'script_src'
+					format: 'script_src'
 				},
 				files: [
 					{dest: 'tmp/script_src.js', src: ['**/*'], cwd: 'test/files', filter: 'isFile'}
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 			},
 			json_flat: {
 				options: {
-					type: 'json_flat'
+					format: 'json_flat'
 				},
 				files: [
 					{dest: 'tmp/json_flat.json', src: ['**/*'], cwd: 'test/files', filter: 'isFile'}
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
 			},
 			lines: {
 				options: {
-					type: 'lines'
+					format: 'lines'
 				},
 				files: [
 					{dest: 'tmp/lines.txt', src: ['**/*'], cwd: 'test/files', filter: 'isFile'}
