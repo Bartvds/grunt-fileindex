@@ -1,6 +1,6 @@
 {
   "name": "grunt-fileindex",
-  "description": "Make index files of directory contents",
+  "description": "Write index files of directory contents",
   "version": "0.1.0",
   "homepage": "https://github.com/Bart/grunt-fileindex",
   "author": {
@@ -38,6 +38,6 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin", "file", "directory", "folder", "index"
   ]
 }

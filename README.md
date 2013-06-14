@@ -1,6 +1,6 @@
 # grunt-fileindex
 
-> Make index files of directory contents
+> Write index files of directory contents
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -19,26 +19,15 @@ grunt.loadNpmTasks('grunt-fileindex');
 
 ## The "fileindex" task
 
-### Overview
-In your project's Gruntfile, add a section named `fileindex` to the data object passed into `grunt.initConfig()`.
+Leverage the standard grunt file selector api to select files and output lists of according to various pluggable formats. Currently supported:
 
-```js
-grunt.initConfig({
-  fileindex: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
-```
+* `lines` - newline seperated
+* `json_flat` - simple json array
+* `script_src` - list of `document.write('<script src="{path}"></script>');` (useful to update javascript includes, like a list of tests).
+
+More will added later or at request.
 
 ### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
@@ -68,5 +57,11 @@ grunt.initConfig({
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-_(Nothing yet)_
+## History
+
+* 0.1.0 - First release
+
+## License
+
+Copyright (c) 2013 Bart van der Schoor
+Licensed under the MIT license.

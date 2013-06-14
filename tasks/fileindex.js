@@ -25,10 +25,12 @@ module.exports = function (grunt) {
 	grunt.registerMultiTask('fileindex', 'Your task description goes here.', function () {
 
 		var util = require('util');
+		var path = require('path');
 
 		var options = this.options({
 			type: 'json',
 			sort: true,
+			absolute: false,
 			pretty: true
 		});
 
@@ -42,13 +44,24 @@ module.exports = function (grunt) {
 		this.files.forEach(function (f) {
 			var list = [];
 			sets++;
-			f.src.forEach(function (filepath) {
+
+			//grunt.log.writeln(util.inspect(f, false, 10));
+			//grunt.log.writeln(util.inspect(f.src, false, 10));
+
+			f.src.forEach(function (src) {
+				var filepath = src;
+				if (f.cwd) {
+					filepath = path.join(f.cwd, src);
+				}
+				if (options.absolute) {
+					src = path.resolve(filepath);
+				}
 				if (!grunt.file.exists(filepath)) {
 					grunt.log.warn('source file "' + filepath + '" not found.');
 					return;
 				}
 				files++;
-				list.push(filepath);
+				list.push(src);
 			});
 
 			if (options.sort) {
