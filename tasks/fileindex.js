@@ -69,14 +69,13 @@ module.exports = function (grunt) {
 			}
 
 			var writer = lib.formats[options.format];
-			grunt.log.writeln('-> type "' + options.format + '"');
 			var ret = writer(f.dest, list, options);
 			if (typeof ret !== 'undefined') {
 				grunt.file.write(f.dest, ret);
 			}
 		});
 
-		grunt.log.ok('listed ' + files + ' ' + pluralise('file', files) + ' in ' + sets + ' ' + pluralise('set', sets) + ' as "' + options.format + '"');
+		grunt.log.ok('listed ' + files + ' ' + pluralise('file', files) + ' in ' + sets + ' "' + options.format + '" ' + pluralise('index', sets) + '');
 
 		return true;
 	});
