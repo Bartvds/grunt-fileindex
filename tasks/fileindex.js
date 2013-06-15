@@ -29,14 +29,25 @@ module.exports = function (grunt) {
 
 		var options = this.options({
 			format: 'lines',
-			sort: true,
+			sort: false,
 			absolute: false,
 			pretty: true
 		});
 
-		if (!lib.formats.hasOwnProperty(options.format)) {
+		if (typeof options.format === 'string' && !lib.formats.hasOwnProperty(options.format)) {
 			grunt.log.fail('output type "' + options.format + '" not found');
 			return false;
+		}
+
+		var writer;
+		var label;
+		if (typeof options.format === 'function') {
+			writer = options.format;
+			label = 'custom callback';
+		}
+		else {
+			writer = lib.formats[options.format];
+			label = options.format;
 		}
 
 		var files = 0;
@@ -67,15 +78,13 @@ module.exports = function (grunt) {
 			if (options.sort) {
 				list.sort();
 			}
-
-			var writer = lib.formats[options.format];
-			var ret = writer(f.dest, list, options);
+			var ret = writer(list, options, f.dest);
 			if (typeof ret !== 'undefined') {
 				grunt.file.write(f.dest, ret);
 			}
 		});
 
-		grunt.log.ok('listed ' + files + ' ' + pluralise('file', files) + ' in ' + sets + ' "' + options.format + '" ' + pluralise('index', sets) + '');
+		grunt.log.ok('listed ' + files + ' ' + pluralise('file', files) + ' in ' + sets + ' "' + label + '" ' + pluralise('index', sets) + '');
 
 		return true;
 	});

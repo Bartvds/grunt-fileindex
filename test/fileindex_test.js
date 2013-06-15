@@ -45,5 +45,13 @@ exports.fileindex = {
 		var expected = grunt.file.read('test/expected/script_src.js');
 		test.equal(actual, expected);
 		test.done();
+	},
+	custom: function (test) {
+		test.expect(1);
+
+		var actual = grunt.file.read('tmp/custom.txt');
+		var expected = grunt.file.read('test/expected/custom.txt');
+		test.equal(actual, expected);
+		test.done();
 	}
 };

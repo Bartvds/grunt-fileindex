@@ -52,6 +52,16 @@ module.exports = function (grunt) {
 				files: [
 					{dest: 'tmp/lines.txt', src: ['**/*'], cwd: 'test/files', filter: 'isFile'}
 				]
+			},
+			custom: {
+				options: {
+					format: function(list, options, dest) {
+						return '<p>\n' + list.sort().reverse().join('<br>\n') + '\n</p>\n';
+					}
+				},
+				files: [
+					{dest: 'tmp/custom.txt', src: ['**/*'], cwd: 'test/files', filter: 'isFile'}
+				]
 			}
 		},
 		nodeunit: {

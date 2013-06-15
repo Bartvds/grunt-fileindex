@@ -1,5 +1,7 @@
 # grunt-fileindex
 
+[![Dependency Status](https://gemnasium.com/Bartvds/grunt-fileindex.png)](https://gemnasium.com/Bartvds/grunt-fileindex)
+
 > Write index files of directory contents
 
 ## Getting Started
@@ -68,6 +70,16 @@ grunt.initConfig({
 			},
 			files: [
 				{dest: 'test/all.js', src: ['**/*.test.js'], cwd: 'test', filter: 'isFile'}
+			]
+		},
+		custom: {
+			options: {
+				format: function(list, options, dest) {
+					return '<p>\n' + list.sort().reverse().join('<br>\n') + '\n</p>\n';
+				}
+			},
+			files: [
+				{dest: 'tmp/custom.txt', src: ['**/*'], cwd: 'test/files', filter: 'isFile'}
 			]
 		}
 	}
