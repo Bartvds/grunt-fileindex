@@ -21,11 +21,12 @@ grunt.loadNpmTasks('grunt-fileindex');
 
 ## The "fileindex" task
 
-Leverage the standard grunt file selector api to select files and output lists of according to various pluggable formats. Currently supported:
+Leverage the standard grunt file selector api to select files and output lists of according to various pluggable formats. Currently supported as `format` parameter:
 
 * `lines` - newline seperated
 * `json_flat` - simple json array
 * `script_src` - list of `document.write('<script src="{path}"></script>');` (useful to update javascript includes, like a list of tests).
+* callback function: `function(list, options, dest){ ... }` that returns the data to write, or `undefined` to skip.
 
 More will added later or at request.
 
@@ -34,7 +35,7 @@ More will added later or at request.
 ````
 //default options:
 format: 'lines'
-sort: true
+sort: false
 absolute: false
 
 //not supported by all formats:
