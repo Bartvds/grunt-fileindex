@@ -28,6 +28,8 @@ Leverage the standard grunt file selector api to select files and output lists o
 * `script_src` - list of `document.write('<script src="{path}"></script>');` (useful to update javascript includes, like a list of tests).
 * callback function: `function(list, options, dest){ ... }` that returns the data to write, or `undefined` to skip.
 
+For some sample output look at the [test fixtures](https://github.com/Bartvds/grunt-fileindex/tree/master/test/expected).
+
 More will added later or at request.
 
 ### Options
