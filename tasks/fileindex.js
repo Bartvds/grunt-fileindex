@@ -78,6 +78,13 @@ module.exports = function (grunt) {
 			if (options.sort) {
 				list.sort();
 			}
+
+			if (options.ext === false) {
+				list.forEach(function (address,index) {
+				    list[index] = address.substring(0,address.lastIndexOf('.'));
+				});
+			}
+			
 			var ret = writer(list, options, f.dest);
 			if (typeof ret !== 'undefined') {
 				grunt.file.write(f.dest, ret);
